@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AuraAilyf - Premium Web Services & Digital Solutions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <canvas id="particles"></canvas>
+
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-brand">
+          <span class="brand-icon">◆</span>
+          <span>AuraAilyf</span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#process" class="nav-link">Process</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Start Project</a>
+      </div>
+    </nav>
+
+    <section id="home" class="hero-alt">
+      <div class="container hero-alt-container">
+        <div class="hero-alt-content">
+          <h1 class="hero-alt-title">
+            NextGen Digital
+            <span>Solutions</span>
+          </h1>
+          <p class="hero-alt-lead">Leading the Way in Business Innovation</p>
+          <p class="hero-alt-description">
+            Innovation isn't just an option—it's the way forward. At AuraAilyf, we empower businesses to embrace the future with cutting-edge technology and forward-thinking strategies. We're here to transform your vision into reality and elevate your business to the next level.
+          </p>
+          <a href="#contact" class="btn-alt">Learn More</a>
+        </div>
+        <div class="hero-alt-visual">
+          <div class="laptop">
+            <div class="laptop-screen">
+              <div class="screen-glow"></div>
+              <div class="screen-logo-text">AURAAILYF</div>
+              <div class="screen-code-line" style="top: 20%; left: 15%; width: 40%;"></div>
+              <div class="screen-code-line" style="top: 30%; left: 25%; width: 50%;"></div>
+              <div class="screen-code-line" style="top: 40%; left: 20%; width: 55%;"></div>
+              <div class="screen-code-line" style="top: 50%; left: 10%; width: 45%;"></div>
+              <div class="screen-code-line" style="top: 60%; left: 30%; width: 60%;"></div>
+              <div class="screen-code-line" style="top: 70%; left: 22%; width: 30%;"></div>
+              <div class="screen-ui-box box-1"></div>
+              <div class="screen-ui-box box-2"></div>
+              <div class="screen-ui-box box-3"></div>
+              <div class="screen-tag tag-1">&lt;CODING&gt;</div>
+              <div class="screen-tag tag-2">UI_TEST</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Do</span>
+          <h2 class="section-title">Our Services</h2>
+          <p class="section-subtitle">Comprehensive solutions tailored to your business needs</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card" data-index="0">
+            <div class="service-number">01</div>
+            <div class="service-icon-wrapper">
+              <svg class="service-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="6" y="8" width="36" height="28" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M6 14H42" stroke="currentColor" stroke-width="2"/>
+                <circle cx="10" cy="11" r="1" fill="currentColor"/>
+                <circle cx="14" cy="11" r="1" fill="currentColor"/>
+                <path d="M14 40L24 36L34 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Web Development</h3>
+            <p>Modern, responsive websites built with the latest technologies. From landing pages to complex web applications.</p>
+            <a href="#contact" class="service-link">Learn More →</a>
+          </div>
+          
+          <div class="service-card" data-index="4">
+            <div class="service-number">05</div>
+            <div class="service-icon-wrapper">
+              <svg class="service-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="10" y="12" width="28" height="28" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M10 20H38" stroke="currentColor" stroke-width="2"/>
+                <circle cx="18" cy="28" r="2" fill="currentColor"/>
+                <circle cx="30" cy="28" r="2" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3>E-Commerce</h3>
+            <p>High-converting online stores. Custom e-commerce solutions with seamless checkout and inventory management.</p>
+            <a href="#contact" class="service-link">Learn More →</a>
+          </div>
+          <div class="service-card" data-index="5">
+            <div class="service-number">06</div>
+            <div class="service-icon-wrapper">
+              <svg class="service-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M24 8L16 16L24 24L32 16L24 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M24 24L16 32L24 40L32 32L24 24Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Consulting</h3>
+            <p>Expert technical guidance. Architecture planning, code reviews, and strategic technology consulting.</p>
+            <a href="#contact" class="service-link">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="process">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">How We Work</span>
+          <h2 class="section-title">Our Process in Four Easy Steps</h2>
+          <p class="section-subtitle">A streamlined workflow to take your idea from concept to completion</p>
+        </div>
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="process-number-wrapper">
+              <div class="process-number">1</div>
+            </div>
+            <h3 class="process-title">Share Requirements</h3>
+            <p class="process-description">
+              Share your project goals with us, and we'll craft a tailored plan that perfectly aligns with your vision and needs.
+            </p>
+          </div>
+          <div class="process-step">
+            <div class="process-number-wrapper">
+              <div class="process-number">2</div>
+            </div>
+            <h3 class="process-title">Planning and Research</h3>
+            <p class="process-description">
+              We work closely with you to understand your goals and conduct thorough research, designing a customized plan.
+            </p>
+          </div>
+          <div class="process-step">
+            <div class="process-number-wrapper">
+              <div class="process-number">3</div>
+            </div>
+            <h3 class="process-title">Design & Implementation</h3>
+            <p class="process-description">
+              Our expert team designs and develops your solution, integrating features as needed to ensure its success.
+            </p>
+          </div>
+          <div class="process-step">
+            <div class="process-number-wrapper">
+              <div class="process-number">4</div>
+            </div>
+            <h3 class="process-title">Completion & Showcase</h3>
+            <p class="process-description">
+              We seamlessly launch your project and provide continuous support, ensuring everything operates flawlessly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Client Stories</span>
+          <h2 class="section-title">What Clients Say</h2>
+          <p class="section-subtitle">Don't just take our word for it</p>
+        </div>
+        
+          <div class="testimonial-card">
+            <div class="author-info">
+                <div class="author-name">Sahiti</div>
+                <div class="author-role">Founder, Digital Bloom</div>
+              </div>
+            <p class="testimonial-text">Thank you so much for The project😊 your team was very good and delivered us a good project also thank you to your software developer sandeep he helped us a lot.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">Sahiti</div>
+              
+            </div>
+          </div>
+          
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Get Started</span>
+          <h2 class="section-title">Let's Work Together</h2>
+          <p class="section-subtitle">Ready to bring your project to life? Get in touch with us today</p>
+        </div>
+        <div class="contact-content">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="company">Company Name</label>
+              <input type="text" id="company" name="company" placeholder="Your Company" />
+            </div>
+            <div class="form-group">
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" rows="6" placeholder="Tell us about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-large">
+              <span>Send Message</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </form>
+          <div class="contact-sidebar">
+            <div class="contact-info-card">
+              <h3>Contact Information</h3>
+              <div class="info-items">
+                <div class="info-item">
+                  <div class="info-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M3 8L10.89 13.26C11.55 13.67 12.45 13.67 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="info-label">Email</div>
+                    <div class="info-value">auraailyf@gmail.com</div>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="info-label">Phone</div>
+                    <div class="info-value">+91 74161 53019</div>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M17.657 16.657L13.414 20.9C12.633 21.681 11.367 21.681 10.586 20.9L6.343 16.657C3.219 13.533 3.219 8.467 6.343 5.343C9.467 2.219 14.533 2.219 17.657 5.343C20.781 8.467 20.781 13.533 17.657 16.657Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="info-label">Location</div>
+                    <div class="info-value">vijayawada</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="#" class="social-link">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M20 3.799C19.29 4.1 18.53 4.3 17.74 4.37C18.55 3.88 19.17 3.11 19.47 2.18C18.7 2.63 17.85 2.95 16.96 3.12C16.24 2.36 15.23 1.9 14.11 1.9C11.95 1.9 10.2 3.65 10.2 5.81C10.2 6.11 10.23 6.4 10.29 6.68C6.74 6.52 3.57 4.98 1.46 2.6C1.13 3.19 0.94 3.88 0.94 4.62C0.94 6.03 1.66 7.27 2.75 7.98C2.08 7.96 1.46 7.78 0.92 7.49V7.54C0.92 9.43 2.28 11.01 4.07 11.37C3.75 11.45 3.41 11.5 3.07 11.5C2.83 11.5 2.6 11.48 2.37 11.43C2.84 13 4.29 14.13 6.01 14.16C4.67 15.19 2.99 15.81 1.17 15.81C0.87 15.81 0.57 15.79 0.28 15.76C2.01 16.85 4.06 17.49 6.27 17.49C14.1 17.49 18.42 11.57 18.42 6.26C18.42 6.09 18.42 5.92 18.41 5.75C19.2 5.19 19.9 4.48 20.46 3.67L20 3.799Z"/>
+                </svg>
+              </a>
+              <a href="#" class="social-link">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M20 10C20 4.48 15.52 0 10 0C4.48 0 0 4.48 0 10C0 14.84 3.44 18.87 8 19.8V13H6V10H8V7.5C8 5.57 9.57 4 11.5 4H14V7H12C11.45 7 11 7.45 11 8V10H14V13H11V19.95C16.05 19.45 20 15.19 20 10Z"/>
+                </svg>
+              </a>
+              <a href="#" class="social-link">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M20 3.18C20 2.53 19.47 2 18.82 2H1.18C0.53 2 0 2.53 0 3.18V16.82C0 17.47 0.53 18 1.18 18H18.82C19.47 18 20 17.47 20 16.82V3.18ZM6 15H3V8H6V15ZM4.5 6.75C3.67 6.75 3 6.08 3 5.25C3 4.42 3.67 3.75 4.5 3.75C5.33 3.75 6 4.42 6 5.25C6 6.08 5.33 6.75 4.5 6.75ZM17 15H14V11.5C14 10.67 13.33 10 12.5 10C11.67 10 11 10.67 11 11.5V15H8V8H11V9.25C11.62 8.63 12.56 8 13.5 8C15.43 8 17 9.57 17 11.5V15Z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span class="brand-icon">◆</span>
+              <span>AuraAilyf</span>
+            </div>
+            <p>Crafting digital experiences that inspire and deliver results. Your trusted partner in web innovation.</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Services</h4>
+              <ul>
+                <li><a href="#services">Web Development</a></li>
+
+                <li><a href="#services">Consulting</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4>Company</h4>
+              <ul>
+                <li><a href="#about">About Us</a></li>
+
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4>Connect</h4>
+              <ul>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">LinkedIn</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 AuraAilyf. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="{{ url_for('static', filename='main.js') }}"></script>
+  </body>
+</html>
