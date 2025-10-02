@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = Object.fromEntries(formData.entries());
 
             // --- DEBUGGING ---
-            const backendUrl = 'http://127.0.0.1:5000/api/contact';
+            const backendUrl = '/api/contact';
             console.log('--- Submitting Form ---');
             console.log('Attempting to POST to URL:', backendUrl);
             console.log('Data being sent:', JSON.stringify(data, null, 2));
