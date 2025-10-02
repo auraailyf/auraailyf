@@ -1,4 +1,5 @@
 import os
+import sys # <-- Import sys
 import psycopg2
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
@@ -11,13 +12,7 @@ app = Flask(
     static_folder='static',
     template_folder='templates'
 )
-
-# --- UPDATED CORS CONFIGURATION ---
-# This is a more robust way to handle CORS. It explicitly allows
-# requests to any URL starting with /api/.
 CORS(app, resources={r"/api/*": {"origins": "*"}})
-# --- END OF UPDATE ---
-
 
 def get_db_connection():
     """Establishes a connection to the PostgreSQL database."""
@@ -28,8 +23,8 @@ def get_db_connection():
         print(f"Error connecting to the database: {e}")
         return None
 
-def create_table_if_not_exists():
-    """Creates the contact_submissions table if it doesn't exist."""
+def create_table():
+    """Creates the contact_submissions table."""
     conn = get_db_connection()
     if conn:
         try:
@@ -52,13 +47,11 @@ def create_table_if_not_exists():
         finally:
             conn.close()
 
-# Route to serve the frontend homepage
 @app.route('/')
 def home():
     """Renders the main index.html page."""
     return render_template('index.html')
 
-# API Endpoint for the form
 @app.route('/api/contact', methods=['POST'])
 def handle_contact_form():
     """Saves form submissions to the database."""
@@ -85,7 +78,11 @@ def handle_contact_form():
     finally:
         conn.close()
 
+# --- NEW BLOCK FOR RUNNING COMMANDS ---
 if __name__ == '__main__':
-    create_table_if_not_exists()
-    app.run(debug=True)
-
+    # Check if a command-line argument was passed
+    if len(sys.argv) > 1 and sys.argv[1] == 'init-db':
+        create_table()
+    else:
+        # This will run when you start the server normally
+        app.run(debug=False)
