@@ -1,6 +1,7 @@
 import os
-import sys # <-- Import sys
-import psycopg2
+import sys
+import csv
+from datetime import datetime
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -14,38 +15,40 @@ app = Flask(
 )
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-def get_db_connection():
-    """Establishes a connection to the PostgreSQL database."""
-    try:
-        conn = psycopg2.connect(os.environ.get('DATABASE_URL'))
-        return conn
-    except Exception as e:
-        print(f"Error connecting to the database: {e}")
-        return None
+# Define the name of our CSV file
+CSV_FILE = 'submissions.csv'
 
-def create_table():
-    """Creates the contact_submissions table."""
-    conn = get_db_connection()
-    if conn:
-        try:
-            cur = conn.cursor()
-            cur.execute("""
-                CREATE TABLE IF NOT EXISTS contact_submissions (
-                    id SERIAL PRIMARY KEY,
-                    name VARCHAR(255) NOT NULL,
-                    email VARCHAR(255) NOT NULL,
-                    company VARCHAR(255),
-                    message TEXT NOT NULL,
-                    submitted_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-                );
-            """)
-            conn.commit()
-            cur.close()
-            print("Table 'contact_submissions' is ready.")
-        except Exception as e:
-            print(f"Error creating table: {e}")
-        finally:
-            conn.close()
+def write_to_csv(data):
+    """Appends form data to a CSV file."""
+    # Check if the file already exists to decide whether to write headers
+    file_exists = os.path.isfile(CSV_FILE)
+    
+    try:
+        # 'a' means 'append' mode. newline='' prevents extra blank rows.
+        with open(CSV_FILE, mode='a', newline='', encoding='utf-8') as file:
+            # Define the order of columns
+            fieldnames = ['name', 'email', 'company', 'message', 'submitted_at']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+            # If the file is new, write the header row first
+            if not file_exists:
+                writer.writeheader()
+
+            # Add the current timestamp to the data
+            data_to_write = {
+                'name': data.get('name'),
+                'email': data.get('email'),
+                'company': data.get('company'),
+                'message': data.get('message'),
+                'submitted_at': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            }
+            # Write the new row of data
+            writer.writerow(data_to_write)
+        print(f"Successfully wrote data to {CSV_FILE}")
+        return True
+    except Exception as e:
+        print(f"Error writing to CSV file: {e}")
+        return False
 
 @app.route('/')
 def home():
@@ -54,35 +57,17 @@ def home():
 
 @app.route('/api/contact', methods=['POST'])
 def handle_contact_form():
-    """Saves form submissions to the database."""
+    """Saves form submissions to a CSV file."""
     data = request.get_json()
     if not data or not all(k in data for k in ['name', 'email', 'message']):
         return jsonify({'error': 'Missing required fields.'}), 400
 
-    conn = get_db_connection()
-    if not conn:
-        return jsonify({'error': 'Database connection failed.'}), 500
-    
-    try:
-        cur = conn.cursor()
-        cur.execute(
-            "INSERT INTO contact_submissions (name, email, company, message) VALUES (%s, %s, %s, %s)",
-            (data['name'], data['email'], data.get('company'), data['message'])
-        )
-        conn.commit()
-        cur.close()
+    # Call our new function to write the data to the CSV
+    if write_to_csv(data):
         return jsonify({'success': True, 'message': 'Message sent successfully!'}), 201
-    except Exception as e:
-        print(f"Error inserting data: {e}")
-        return jsonify({'error': 'An internal server error occurred.'}), 500
-    finally:
-        conn.close()
-
-# --- NEW BLOCK FOR RUNNING COMMANDS ---
-if __name__ == '__main__':
-    # Check if a command-line argument was passed
-    if len(sys.argv) > 1 and sys.argv[1] == 'init-db':
-        create_table()
     else:
-        # This will run when you start the server normally
-        app.run(debug=False)
+        return jsonify({'error': 'An internal server error occurred while saving data.'}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
