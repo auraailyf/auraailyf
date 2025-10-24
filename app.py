@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from dotenv import load_dotenv
 
-# Load environment variables for local development
+# Load environment variables from a .env file for local development
 load_dotenv()
 
 app = Flask(
@@ -18,10 +18,13 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 def send_email(data):
     """Sends an email with the form submission data."""
-    # Get your email credentials from environment variables
+    # --- THIS IS THE CORRECTED SECTION ---
+    # Get your email credentials from environment variables by their NAME.
+    # The code reads the names, and the .env file provides the values.
     sender_email = os.environ.get('EMAIL_SENDER')
     receiver_email = os.environ.get('EMAIL_RECEIVER')
-    app_password = os.environ.get('EMAIL_APP_PASSWORD') # Use the App Password here
+    app_password = os.environ.get('EMAIL_APP_PASSWORD')
+    # --- END OF CORRECTION ---
 
     # Check if all required email variables are set
     if not all([sender_email, receiver_email, app_password]):

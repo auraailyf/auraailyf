@@ -3,7 +3,38 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* Style for link buttons */
+.link-button {
+  display: inline-flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  padding: 1rem 2rem;
+  background-color: #3b82f6; /* Example blue color */
+  color: white !important; /* Ensure text is white */
+  text-decoration: none !important; /* Remove underline */
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  gap: 0.5rem; /* Space between text and icon */
+  text-align: center;
+}
+.link-button:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+  color: white !important;
+}
+.link-button svg {
+   width: 20px;
+   height: 20px;
+}
 
+/* Container for the new button in sidebar */
+.fill-form-button-container {
+   margin-top: 2rem; /* Add some space above the button */
+   text-align: center; /* Center the button within its container */
+}
 :root {
   --primary: #6366f1;
   --primary-dark: #4f46e5;
@@ -872,8 +903,10 @@ section:not(#home) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 32px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   border-top: 1px solid var(--border);
+  padding-left:500px;
 }
 
 .footer-bottom p {

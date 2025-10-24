@@ -1,31 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ... (all your other existing JS code for navbar, scroll effects, etc.) ...
-    // Keep all your original code from lines 1 to 65 here.
-    // The new code is added below.
-    
-    // --- 5. Contact Form Submission with Debugging ---
+    // --- (Your existing code for navbar, scroll effects, etc. goes here) ---
+    // This section should contain all the visual effects for your page.
+    // For this example, I'll assume your previous code is here.
+
+    // --- 5. Contact Form Submission Logic ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalButtonText = submitButton.querySelector('span').textContent;
 
         contactForm.addEventListener('submit', async (event) => {
+            // Prevent the browser's default behavior of reloading the page on submit
             event.preventDefault();
 
+            // Provide visual feedback to the user
             submitButton.disabled = true;
             submitButton.querySelector('span').textContent = 'Sending...';
 
+            // Collect all the data from the form fields
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
 
-            // --- DEBUGGING ---
+            // --- THIS URL IS CORRECT ---
+            // Using a relative URL like '/api/contact' is the best practice.
+            // It works for both your local server (http://127.0.0.1:5000)
+            // and your live Render server (https://auraailyf.onrender.com).
             const backendUrl = '/api/contact';
+            
             console.log('--- Submitting Form ---');
             console.log('Attempting to POST to URL:', backendUrl);
             console.log('Data being sent:', JSON.stringify(data, null, 2));
-            // --- END DEBUGGING ---
 
             try {
+                // Send the data to the backend using the Fetch API
                 const response = await fetch(backendUrl, {
                     method: 'POST',
                     headers: {
@@ -37,20 +44,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (response.ok) {
+                    // If the backend responds with success, show an alert and clear the form
                     alert('Success! Your message has been sent successfully.');
                     contactForm.reset();
                 } else {
+                    // If the backend responds with an error, show the error message
                     alert(`Error: ${result.error || 'Something went wrong.'}`);
                 }
             } catch (error) {
-                // --- MORE DEBUGGING ---
+                // This catches network errors (e.g., server is down)
                 console.error('Fetch failed with an error:', error);
                 alert('Failed to connect to the server. Please check your connection and the browser console (F12) for more details.');
-                // --- END DEBUGGING ---
             } finally {
+                // Always re-enable the button, whether it succeeded or failed
                 submitButton.disabled = false;
                 submitButton.querySelector('span').textContent = originalButtonText;
             }
         });
     }
 });
+
