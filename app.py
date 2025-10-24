@@ -1,4 +1,5 @@
 import os
+import sys
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -14,17 +15,15 @@ app = Flask(
     static_folder='static',
     template_folder='templates'
 )
+# Configure CORS to allow your frontend to communicate with the API
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 def send_email(data):
     """Sends an email with the form submission data."""
-    # --- THIS IS THE CORRECTED SECTION ---
     # Get your email credentials from environment variables by their NAME.
-    # The code reads the names, and the .env file provides the values.
     sender_email = os.environ.get('EMAIL_SENDER')
     receiver_email = os.environ.get('EMAIL_RECEIVER')
     app_password = os.environ.get('EMAIL_APP_PASSWORD')
-    # --- END OF CORRECTION ---
 
     # Check if all required email variables are set
     if not all([sender_email, receiver_email, app_password]):
@@ -55,14 +54,16 @@ def send_email(data):
     # Set up the email object
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
-    message["From"] = f"AuraAilyf Website <{sender_email}>"
+    message["From"] = f"AuraAilyf Website <{sender_email}>" # Display name for the sender
     message["To"] = receiver_email
     message.attach(MIMEText(body, "html"))
 
     try:
         # Connect to Gmail's secure SMTP server
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            # Login using the sender email and the App Password
             server.login(sender_email, app_password)
+            # Send the email
             server.sendmail(sender_email, receiver_email, message.as_string())
         print("Email notification sent successfully!")
         return True
@@ -79,15 +80,19 @@ def home():
 def handle_contact_form():
     """Handles the form submission by sending an email."""
     data = request.get_json()
+    # Basic validation
     if not data or not all(k in data for k in ['name', 'email', 'message']):
         return jsonify({'error': 'Missing required fields.'}), 400
 
+    # Call the send_email function
     if send_email(data):
         return jsonify({'success': True, 'message': 'Message sent successfully!'}), 201
     else:
-        # Send a generic error to the user for security
+        # Send a generic error to the user if email fails
         return jsonify({'error': 'An internal server error occurred.'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Run the Flask development server (for local testing)
+    # Set debug=False for production readiness, although Gunicorn ignores this
+    app.run(debug=False)
 
