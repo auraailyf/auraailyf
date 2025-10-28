@@ -443,7 +443,7 @@ section:not(#home) {
 }
 
 .se {
-  margin-left: 550px;
+  margin-left: 400px;
   margin-top: 20px;
   font-size: 18px;
   color: var(--text-secondary);
@@ -983,7 +983,7 @@ section:not(#home) {
   margin-top: 20px;
   padding-bottom: 40px;
   border-top: 1px solid var(--border);
-  padding-left:700px;
+  padding-left:530px;
 }
 
 .footer-bottom p {
