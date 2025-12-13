@@ -1222,3 +1222,125 @@ section:not(#home) {
 }
 
 /* end of file */
+/* --- Notification Popup Styles --- */
+.promo-popup {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 340px;
+  background: rgba(26, 26, 46, 0.95); /* Matches your card-bg dark theme */
+  border: 1px solid rgba(99, 102, 241, 0.3); /* Matches your primary border */
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  font-family: 'Inter', sans-serif;
+  
+  /* Animation setup */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Class to trigger animation via JS */
+.promo-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.popup-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 60%);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.3s ease;
+  z-index: 2;
+}
+
+.popup-close:hover {
+  color: var(--text-primary);
+}
+
+.popup-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.popup-icon {
+  font-size: 28px;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+}
+
+.popup-text h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  background: linear-gradient(135deg, #fff, #a5b4fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.popup-text p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.popup-text strong {
+  color: var(--secondary); /* Cyan accent */
+}
+
+.popup-btn {
+  display: block;
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.popup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .promo-popup {
+    width: calc(100% - 40px);
+    right: 20px;
+    bottom: 20px;
+    padding: 20px;
+  }
+}

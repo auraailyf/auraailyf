@@ -64,3 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function closePopup() {
+            const popup = document.getElementById('promoPopup');
+            popup.style.opacity = '0';
+            popup.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 300);
+        }
+
+        // Optional: Show popup after 2 seconds
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('promoPopup').classList.add('show');
+            }, 2000);
+        };
